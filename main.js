@@ -34,7 +34,13 @@ function reset() {
 // 審議ネコを表示する
 function judge(point) {
     // 0.5秒後に審議ネコ1を表示する
-
+    setTimeout(function (){
+        if (point >= 1) {
+            document.querySelector("#judge_1").className = "judge ok cat1";
+        } else {
+            document.querySelector("#judge_1").className = "judge ng cat1";
+        }
+    },500);
     // 1秒後に審議ネコ2を表示する
 
     // 1.5秒後に審議ネコ3を表示する
