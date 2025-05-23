@@ -42,9 +42,21 @@ function judge(point) {
         }
     },500);
     // 1秒後に審議ネコ2を表示する
-
+    setTimeout(function (){
+        if (point >= 1) {
+            document.querySelector("#judge_2").className = "judge ok cat2";
+        } else {
+            document.querySelector("#judge_2").className = "judge ng cat2";
+        }
+    },1000);
     // 1.5秒後に審議ネコ3を表示する
-
+    setTimeout(function (){
+        if (point >= 1) {
+            document.querySelector("#judge_3").className = "judge ok cat3";
+        } else {
+            document.querySelector("#judge_3").className = "judge ng cat3";
+        }
+    },1500);
     // 2秒後に結果を表示する
 }
 
