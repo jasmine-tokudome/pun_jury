@@ -58,6 +58,23 @@ function judge(point) {
         }
     },1500);
     // 2秒後に結果を表示する
+    setTimeout(function () {
+        switch (point) {
+            case 0:
+            document.querySelector("#result").textContent = "失格";
+            break;
+            case 1:
+            document.querySelector("#result").textContent = "三級合格";
+            break;
+            case 2:
+            document.querySelector("#result").textContent = "二級合格";
+            break;
+            case 3:
+            document.querySelector("#result").textContent = "一級合格";
+            break;
+        }
+        document.querySelector("#result").className = "kurukuru";
+    }, 2000);
 }
 
 // 点数を審議する
