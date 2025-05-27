@@ -47,17 +47,18 @@ body {
 
 .judge.wait.cat1 {
     /* 審議ネコ１待機 */
+    background-image: url(./images/wait1.png);
 
 }
 
 .judge.wait.cat2 {
     /* 審議ネコ２待機 */
-
+    background-image: url(./images/wait2.png);
 }
 
 .judge.wait.cat3 {
     /* 審議ネコ３待機 */
-
+    background-image: url(./images/wait3.png);
 }
 
 .judge.ok.cat1 {
