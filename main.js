@@ -25,7 +25,6 @@ button.addEventListener("click", function () {
 //表示を元に戻す
 function reset() {
     document.querySelector("#result").textContent = "審議中";
-    document.querySelector("#result").className = "";
     document.querySelector("#judge_1").className = "judge wait cat1";
     document.querySelector("#judge_2").className = "judge wait cat2";
     document.querySelector("#judge_3").className = "judge wait cat3";
@@ -43,7 +42,7 @@ function judge(point) {
     },500);
     // 1秒後に審議ネコ2を表示する
     setTimeout(function (){
-        if (point >= 1) {
+        if (point >= 2) {
             document.querySelector("#judge_2").className = "judge ok cat2";
         } else {
             document.querySelector("#judge_2").className = "judge ng cat2";
@@ -51,7 +50,7 @@ function judge(point) {
     },1000);
     // 1.5秒後に審議ネコ3を表示する
     setTimeout(function (){
-        if (point >= 1) {
+        if (point >= 3) {
             document.querySelector("#judge_3").className = "judge ok cat3";
         } else {
             document.querySelector("#judge_3").className = "judge ng cat3";
