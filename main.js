@@ -136,7 +136,7 @@ function getSentence(message) {
         }
     }
     return {
-        original: message
+        original: message,
         reading: reading,
         nouns: nouns,
     }
