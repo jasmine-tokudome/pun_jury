@@ -136,7 +136,7 @@ function getSentence(message) {
         }
     }
     return {
-        original: message,
+        original: message, // 元の文章「今日はいい天気ですね」
         reading: reading,
         nouns: nouns,
     }
