@@ -116,7 +116,7 @@ function check2(message) {
     sentence.reading.length != 0){
         for (let noun of sentence.nouns){
             const hit_original = (sentence.original.match(new RegExp(noun.original, "g")) ?? []).length;
-            const hit_reading = (sentence.reading.match(new RexExp(noun.reading, "g")) ?? []).length;
+            const hit_reading = (sentence.reading.match(new RegExp(noun.reading, "g")) ?? []).length;
             if (hit_original < hit_reading){
                 return true;
             }
