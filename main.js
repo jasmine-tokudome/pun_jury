@@ -135,13 +135,16 @@ function getSentence(message) {
     const tokens = tokenizer.tokenize(message);
     const nouns = [];
     let reading = "";
+    let pronunciation = "";
     for (let token of tokens){
         reading += token.reading ?? token.surface_form;
+        pronunciation += token.pronunciation ?? token.surface_form;
         if (token.pos == "名詞"){
             nouns.push(
                 {
                     original: token.surface_form,
                     reading: token.reading && token.reading != "*" ? token.reading : token.surface_form,
+                    pronunciation: token.pronunciation && token.pronunciation != "*" ? token.pronunciation * token.surface_form,
                 }
             );
         }
@@ -149,6 +152,7 @@ function getSentence(message) {
     return {
         original: message, // 元の文章「今日はいい天気ですね」
         reading: reading,
+        pronunciation: pronunciation,
         nouns: nouns,
     }
 }
