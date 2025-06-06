@@ -127,6 +127,24 @@ function check2(message) {
 
 // ダジャレの判定(読みがちょっと違っていてもOK)
 function check3(message) {
+    const sentence = getSentence(message);
+    if (sentence.original.length != 0 &&
+        sentence.reading.length != 0 &&
+        sentence.pronunciation.length != 0){
+            for (let noun of sentence.nouns){
+                const hit_original = (sentence.original.match(new RegExp(noun.original, "g")) ?? []).length;
+                const hit_reading = (sentence.reading.match(new RegExp(noun.reading, "g")) ?? []).length;
+
+                const hit_pronunciation = (sentence.pronunciation.match(new  RehExp(noun.pronunciation, "g")) ?? []).length;
+                const short_reading = getShortSentence(sentence.reading);
+                const hit_short = (short_reading.match(new RegExp(noun.reading, "g")) ?? []).length;
+                const fuzzy_noun = getFuzzyWord(noun.reading);
+                const hit_fuzzy = (sentence.reading.match(new RegExp(fuzzy_noun, "g")) ?? []).length;
+                if (hit_original < Math.max(hit_reading, hit_pronunciation,hit_fuzzy,hit_short)){
+                    return true;
+                }
+            }
+        }
     return false;
 }
 
