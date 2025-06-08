@@ -224,3 +224,10 @@ function getShortSentence(text) {
     text = text.replaceAll("ー", "");
     return text;
 }
+
+// 文中の省略できる文字を省略する
+function getShortSentence(text){
+    text = text.replaceAll("ッ","");
+    text = text.replaceAll("-","");
+    return text;
+}
