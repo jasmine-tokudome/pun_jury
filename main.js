@@ -162,7 +162,7 @@ function getSentence(message) {
                 {
                     original: token.surface_form,
                     reading: token.reading && token.reading != "*" ? token.reading : token.surface_form,
-                    pronunciation: token.pronunciation && token.pronunciation != "*" ? token.pronunciation * token.surface_form,
+                    pronunciation: token.pronunciation && token.pronunciation != "*" ? token.pronunciation : token.surface_form,
                 }
             );
         }
