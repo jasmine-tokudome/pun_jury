@@ -135,7 +135,7 @@ function check3(message) {
                 const hit_original = (sentence.original.match(new RegExp(noun.original, "g")) ?? []).length;
                 const hit_reading = (sentence.reading.match(new RegExp(noun.reading, "g")) ?? []).length;
 
-                const hit_pronunciation = (sentence.pronunciation.match(new  RehExp(noun.pronunciation, "g")) ?? []).length;
+                const hit_pronunciation = (sentence.pronunciation.match(new RegExp(noun.pronunciation, "g")) ?? []).length;
                 const short_reading = getShortSentence(sentence.reading);
                 const hit_short = (short_reading.match(new RegExp(noun.reading, "g")) ?? []).length;
                 const fuzzy_noun = getFuzzyWord(noun.reading);
