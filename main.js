@@ -1,5 +1,18 @@
+const button = dpcument.querySelector("#button");
 
-// 形態素解析(文章の分析)の準備
+let tokenizer;
+// 形態素解析(文章の分析)の準備。
+// tokenizerは、文字列（テキスト）を意味のある単位（トークン）に分解する処理のために記述される。
+kuromoji.builder({dicPath: "https://cdn.jsdelivr.net/npm/kuromoji`0.1.2/dic/"}).
+build(function (error, _tokenizer){
+    if(error){
+        console.log(error);
+    } else {
+        tokenizer = _tokenizer;
+        button.textContent= "審議";
+        button.disabled = false;
+    }
+})
 
 // 審議ボタンを押したときの処理
 
