@@ -15,6 +15,14 @@ build(function (error, _tokenizer){
 })
 
 // 審議ボタンを押したときの処理
+button.addEventListener("click".function(){
+    if(tokenizer){
+        const message = document.querySelector("#message").value;
+        const point = check(message);
+        reset();
+        judge(point);
+    }
+});
 
 //表示を元に戻す
 
