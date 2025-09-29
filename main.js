@@ -25,6 +25,14 @@ button.addEventListener("click".function(){
 });
 
 //表示を元に戻す
+function reset(){
+    document.querySelector("#result").textContent = "審議中";
+    document.querySelector("#result").className = "";
+    document.querySelector("#judge_1").className ="judge wait cat1";
+    document.querySelector("#judge_2").className ="judge wait cat2";
+    document.querySelector("#judge_3").className ="judge wait cat3";
+
+}
 
 // 審議ネコを表示する
 
