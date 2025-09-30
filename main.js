@@ -35,15 +35,35 @@ function reset(){
 }
 
 // 審議ネコを表示する
-
+function judge(point){
     // 0.5秒後に審議ネコ1を表示する
-    
+    setTimeout(function () {
+        if (point >= 1) {
+            document.querySelector("#judge_1").className = "judge ok cat1";
+        } else {
+            document.querySelector("#judge_1").className = "judge ng cat1";
+        }
+    }, 500);
     // 1秒後に審議ネコ2を表示する
+    setTimeout(function(){
+        if (point >= 1){
+            document.querySelector("#judge_2").className = "judge ok cat2";
+        } else {
+            document.querySelector("#judge_2").className = "judge ng cat2";
+        }
+    }, 1000);
     
     // 1.5秒後に審議ネコ3を表示する
+    setTimeout(function(){
+        if (point >= 1){
+            document.querySelector("#judge_3").className = "judge ok cat3";
+        } else {
+            document.querySelector("#judge_3").className = "judge ng cat3";
+        }
+    }, 1500);
     
     // 2秒後に結果を表示する
-
+}
 // 点数を審議する
 
 // ダジャレの判定(単純に読みが一致していればOK)
