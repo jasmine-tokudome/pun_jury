@@ -61,9 +61,27 @@ function judge(point){
             document.querySelector("#judge_3").className = "judge ng cat3";
         }
     }, 1500);
-    
+
     // 2秒後に結果を表示する
+    setTimeout( function () {
+        switch (point) {
+            case 0:
+                document.querySelector("#result").textContent = "失格";
+                break;
+            case 1:
+                document.querySelector("#reesult").textContent = "三級合格";
+                break;
+            case 2:
+                document.querySelector("#reesult").textContent = "二級合格";
+                break;
+            case 3:
+                document.querySelector("#reesult").textContent = "一級合格";
+                break;
+        }
+        document.querySelector("#result").className = "kurukuru";
+    }, 2000)
 }
+
 // 点数を審議する
 
 // ダジャレの判定(単純に読みが一致していればOK)
