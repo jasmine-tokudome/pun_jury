@@ -83,6 +83,23 @@ function judge(point){
 }
 
 // 点数を審議する
+function judge(point){
+    const result1 = check1(message);
+    const result2 = check2(message);
+    const result3 = check3(message);
+    if (result1 == false && result2 == false && result3 == false){
+        return 0;
+    }
+    if (result1 == true && result2 == false && result3 == false){
+        return 1;
+    }
+    if (result2 == false && result3 == true){
+        return 3;
+    }
+    if(result2 == true){
+        return2;
+    }
+}
 
 // ダジャレの判定(単純に読みが一致していればOK)
 
