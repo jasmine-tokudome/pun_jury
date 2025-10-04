@@ -107,6 +107,9 @@ function check1(message) {
 }
 
 // ダジャレの判定(単純な同じ単語の繰り返しはNG)
+function check2(message){
+    return false;
+}
 
 // ダジャレの判定(読みがちょっと違っていてもOK)
 
