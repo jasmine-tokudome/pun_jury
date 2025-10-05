@@ -112,6 +112,9 @@ function check2(message){
 }
 
 // ダジャレの判定(読みがちょっと違っていてもOK)
+function check3(mesage){
+    return false;
+}
 
 // 文章を解析して返す
 
