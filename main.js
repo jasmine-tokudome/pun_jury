@@ -117,8 +117,52 @@ function check3(mesage){
 }
 
 // 文章を解析して返す
+function getSentence(message){
+
+}
 
 // 単語の読みの補正(ちょっとした違いならOKとする)
+function getFuzzyWord(text) {
+    text = text.replaceAll("ッ", "[ツッ]?");
+    text = text.replaceAll("ァ", "[アァ]?");
+    text = text.replaceAll("ィ", "[イィ]?");
+    text = text.replaceAll("ゥ", "[ウゥ]?");
+    text = text.replaceAll("ェ", "[エェ]?");
+    text = text.replaceAll("ォ", "[オォ]?");
+    text = text.replaceAll("ズ", "[スズヅ]");
+    text = text.replaceAll("ヅ", "[ツズヅ]");
+    text = text.replaceAll("ヂ", "[チジヂ]");
+    text = text.replaceAll("ジ", "[シジヂ]");
+    text = text.replaceAll("ガ", "[カガ]");
+    text = text.replaceAll("ギ", "[キギ]");
+    text = text.replaceAll("グ", "[クグ]");
+    text = text.replaceAll("ゲ", "[ケゲ]");
+    text = text.replaceAll("ゴ", "[コゴ]");
+    text = text.replaceAll("ザ", "[サザ]");
+    text = text.replaceAll("ゼ", "[セゼ]");
+    text = text.replaceAll("ゾ", "[ソゾ]");
+    text = text.replaceAll("ダ", "[タダ]");
+    text = text.replaceAll("デ", "[テデ]");
+    text = text.replaceAll("ド", "[トド]");
+    text = text.replaceAll("ャ", "[ヤャ]");
+    text = text.replaceAll("ュ", "[ユュ]");
+    text = text.replaceAll("ョ", "[ヨョ]");
+    text = text.replaceAll("ー", "[ー]?");
+    text = text.replaceAll("キ[ヤャ]", "(キ[ヤャ]|カ)");
+    text = text.replaceAll("シ[ヤャ]", "(シ[ヤャ]|サ)");
+    text = text.replaceAll("シ[ヨョ]", "(シ[ヨョ]|ソ)");
+    text = text.replaceAll(/[ハバパ]/g, "[ハバパ]");
+    text = text.replaceAll(/[ヒビピ]/g, "[ヒビピ]");
+    text = text.replaceAll(/[フブプ]/g, "[フブプ]");
+    text = text.replaceAll(/[ヘベペ]/g, "[ヘベペ]");
+    text = text.replaceAll(/[ホボポ]/g, "[ホボポ]");
+    text = text.replaceAll(/([アカサタナハマヤラワャ])ー/g, "$1[アァ]?");
+    text = text.replaceAll(/([イキシチニヒミリ])ー/g, "$1[イィ]?");
+    text = text.replaceAll(/([ウクスツヌフムユルュ])ー/g, "$1[ウゥ]?");
+    text = text.replaceAll(/([エケセテネへメレ])ー/g, "$1[エェ]?");
+    text = text.replaceAll(/([オコソトノホモヨロヲョ])ー/g, "$1[ウゥオォ]?");
+    return text;
+}
 
 // 文中の省略できる文字を省略する
 
