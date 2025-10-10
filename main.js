@@ -103,6 +103,15 @@ function check(message) {
 
 // ダジャレの判定(単純に読みが一致していればOK)
 function check1(message) {
+    const sentence = getSentence(message);
+    if(sentence.reading.length != 0){
+        for (let noun of sentence.nouns){
+            const hit_reading = (sentence.reading.match(new RegExp(noun.reading,"g")) ?? []).length;
+            if (1 < hit_reading){
+                return true;
+            }
+        }
+    }
     return false;
 }
 
