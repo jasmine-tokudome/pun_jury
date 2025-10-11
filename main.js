@@ -135,12 +135,14 @@ function getSentence(message){
         if(token.pos == "名詞"){
             nouns.push(
                 {
+                    original: token.surface_form,
                     reading: token.reading && token.reading != "*" ? token.readinr : token.surface_form,
                 }
             );
         }
     }
     return{
+        original: message,
         reading: reading,
         nouns: nouns,
     }
