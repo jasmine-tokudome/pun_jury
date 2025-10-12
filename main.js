@@ -117,6 +117,17 @@ function check1(message) {
 
 // ダジャレの判定(単純な同じ単語の繰り返しはNG)
 function check2(message){
+    const sentences = getSentence (message);
+    if(sentence.original.length != 0 &&
+    sentence.reading.length != 0){
+        for (let noun of sentence.nouns){
+            const hit_original = (sentence.original.match(new RegExp(noun.original,"g")) ?? []).length;
+            const hit_reading = (sentence.reading.match(new RegExp(noun.reading, "g" ))?? []).length;
+            if (hit_original < hit_reading){
+                return true;
+            }
+        }
+    }
     return false;
 }
 
