@@ -141,6 +141,7 @@ function getSentence(message){
     const tokens = tokenizer.tokenize(message);
     const nouns = [];
     let reading = "";
+    let pronunciation = "";
     for (let token of tokens){
         reading += token.reading ?? token.surface_form;
         if(token.pos == "名詞"){
