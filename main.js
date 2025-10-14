@@ -144,11 +144,13 @@ function getSentence(message){
     let pronunciation = "";
     for (let token of tokens){
         reading += token.reading ?? token.surface_form;
+        pronunciation += token.pronunciation ?? token.surface_form;
         if(token.pos == "名詞"){
             nouns.push(
                 {
                     original: token.surface_form,
                     reading: token.reading && token.reading != "*" ? token.readinr : token.surface_form,
+                    pronunciation: token.pronunciation && token.pronunciation != "*" ? token.pronunciation : token.surface_form,
                 }
             );
         }
@@ -156,6 +158,7 @@ function getSentence(message){
     return{
         original: message,
         reading: reading,
+        pronunciation: pronunciation,
         nouns: nouns,
     }
 }
