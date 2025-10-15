@@ -133,6 +133,10 @@ function check2(message){
 
 // ダジャレの判定(読みがちょっと違っていてもOK)
 function check3(mesage){
+    const sentence = getSentence(message);
+    if (sentence.original.length != 0 &&
+        sentence.reading.length != 0 &&
+        sentence.pronunciation.length != 0){}
     return false;
 }
 
