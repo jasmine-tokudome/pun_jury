@@ -28,11 +28,11 @@ interface DajareJudgeProps {
   setJudges: React.Dispatch<React.SetStateAction<JudgeType[]>>;
 }
 
-// getSentence, getFuzzyWord, getShortSentence, check1, check2, check3, check関数は元のまま利用可能
+// 下記 check() 関数は既存のまま利用する想定
 
 const DajareJudge: React.FC<DajareJudgeProps> = ({ message, tokenizer, setResult, setJudges }) => {
-  // タイマーID複数管理（number型またはNodeJS.Timeout型, null初期化）
-  const timersRef = useRef<Array<ReturnType<typeof setTimeout> | number>>([]);
+  // タイマーID複数管理（ブラウザではnumber）
+  const timersRef = useRef<number[]>([]);
 
   const clearAllTimers = useCallback(() => {
     timersRef.current.forEach((tid) => clearTimeout(tid));
@@ -46,22 +46,22 @@ const DajareJudge: React.FC<DajareJudgeProps> = ({ message, tokenizer, setResult
     setJudges(["wait", "wait", "wait"]);
 
     timersRef.current.push(
-      setTimeout(() => {
+      window.setTimeout(() => {
         setJudges([point >= 1 ? "ok" : "ng", "wait", "wait"]);
       }, 500)
     );
     timersRef.current.push(
-      setTimeout(() => {
+      window.setTimeout(() => {
         setJudges([point >= 1 ? "ok" : "ng", point >= 1 ? "ok" : "ng", "wait"]);
       }, 1000)
     );
     timersRef.current.push(
-      setTimeout(() => {
+      window.setTimeout(() => {
         setJudges([point >= 1 ? "ok" : "ng", point >= 1 ? "ok" : "ng", point >= 1 ? "ok" : "ng"]);
       }, 1500)
     );
     timersRef.current.push(
-      setTimeout(() => {
+      window.setTimeout(() => {
         setResult(
           point === 0 ? "失格"
           : point === 1 ? "三級合格"
@@ -74,8 +74,9 @@ const DajareJudge: React.FC<DajareJudgeProps> = ({ message, tokenizer, setResult
   }, [message, tokenizer, clearAllTimers, setResult, setJudges]);
 
   useEffect(() => {
-    return clearAllTimers;
-  }, [clearAllTimers, message, tokenizer]);
+    // クリーンアップでタイマー全消去のみ（複数useEffect依存はここでは不要）
+    return () => clearAllTimers();
+  }, [clearAllTimers]);
 
   return (
     <button disabled={!tokenizer} onClick={handleJudge}>
