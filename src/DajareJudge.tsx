@@ -28,10 +28,19 @@ interface DajareJudgeProps {
   setJudges: React.Dispatch<React.SetStateAction<JudgeType[]>>;
 }
 
-// 下記 check() 関数は既存のまま利用する想定
+// check関数の型宣言（仮定）
+declare function check(
+  message: string, 
+  tokenizer: { tokenize: (message: string) => Token[] } | null
+): number;
 
-const DajareJudge: React.FC<DajareJudgeProps> = ({ message, tokenizer, setResult, setJudges }) => {
-  // タイマーID複数管理（ブラウザではnumber）
+// DajareJudgeコンポーネント
+const DajareJudge: React.FC<DajareJudgeProps> = ({
+  message,
+  tokenizer,
+  setResult,
+  setJudges,
+}) => {
   const timersRef = useRef<number[]>([]);
 
   const clearAllTimers = useCallback(() => {
@@ -57,24 +66,31 @@ const DajareJudge: React.FC<DajareJudgeProps> = ({ message, tokenizer, setResult
     );
     timersRef.current.push(
       window.setTimeout(() => {
-        setJudges([point >= 1 ? "ok" : "ng", point >= 1 ? "ok" : "ng", point >= 1 ? "ok" : "ng"]);
+        setJudges([
+          point >= 1 ? "ok" : "ng",
+          point >= 1 ? "ok" : "ng",
+          point >= 1 ? "ok" : "ng",
+        ]);
       }, 1500)
     );
     timersRef.current.push(
       window.setTimeout(() => {
         setResult(
-          point === 0 ? "失格"
-          : point === 1 ? "三級合格"
-          : point === 2 ? "二級合格"
-          : point === 3 ? "一級合格"
-          : ""
+          point === 0
+            ? "失格"
+            : point === 1
+            ? "三級合格"
+            : point === 2
+            ? "二級合格"
+            : point === 3
+            ? "一級合格"
+            : ""
         );
       }, 2000)
     );
-  }, [message, tokenizer, clearAllTimers, setResult, setJudges]);
+  }, [message, tokenizer, clearAllTimers]);
 
   useEffect(() => {
-    // クリーンアップでタイマー全消去のみ（複数useEffect依存はここでは不要）
     return () => clearAllTimers();
   }, [clearAllTimers]);
 
